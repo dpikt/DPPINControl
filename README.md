@@ -6,9 +6,14 @@ This control comes in handy any time you want PIN entry without using a whole se
 
 ## How to use:
 
-In your view controller's loadView:
+Add DPPINControl.h and DPPINControl.m to your project.
+Then, in your view controller:
 
 ```
+#import "DPPINControl.h"
+
+...
+
 _PINControl = [DPPINControl new];
 [_PINControl addTarget:self action:@selector(onPINControl:) forControlEvents:UIControlEventEditingChanged];
 [self.view addSubview:_PINControl];
