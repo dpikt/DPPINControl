@@ -14,6 +14,7 @@ Changes to PIN trigger the UIControlEventEditingChanged event.
 @interface DPPINControl : UIControl
 @property (nonatomic) NSString *PIN;
 @property (nonatomic) UIFont *font;
+@property (nonatomic) UIColor *textColor;
 @property (nonatomic) UIColor *highlightColor;
 @property (nonatomic) UIColor *fieldBackroundColor;
 @property (nonatomic) UIColor *underlineColor;

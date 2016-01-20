@@ -35,15 +35,17 @@
         {
             [self addSubview:label];
             [label setTranslatesAutoresizingMaskIntoConstraints:NO];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
         }
         
         // Default visual attributes
         self.backgroundColor = [UIColor clearColor];
+        self.font = [UIFont fontWithName:@"Helvetica" size:28];
+        self.textColor = [UIColor blackColor];
+        self.highlightColor = [UIColor colorWithWhite:0 alpha:0.1];
+        self.fieldBackroundColor = [UIColor clearColor];
         self.underlineColor = [UIColor blackColor];
         self.underlineWidth = 2;
-        self.highlightColor = [UIColor colorWithWhite:0 alpha:0.1];
-        self.font = [UIFont fontWithName:@"Helvetica" size:28];
         self.clipsToBounds = YES;
         
         self.PIN =  @"";
@@ -95,7 +97,7 @@
     for (DPPINLabel *label in _labels)
     {
         label.text = @" ";
-        label.backgroundColor = [UIColor clearColor];
+        label.backgroundColor = _fieldBackroundColor;
     }
     // Fill in PIN numbers
     for (int i = 0; i < [self.PIN length]; i++)
@@ -156,19 +158,19 @@
     }
 }
 
+- (void)setTextColor:(UIColor *)textColor
+{
+    _textColor = textColor;
+    for (DPPINLabel *label in _labels)
+    {
+        label.textColor = _textColor;
+    }
+}
+
 - (void)setHighlightColor:(UIColor *)highlightColor
 {
     _highlightColor = highlightColor;
     [self updateLabelsForPIN];
-}
-
-- (void)setFieldBackroundColor:(UIColor *)fieldBackroundColor
-{
-    _fieldBackroundColor = fieldBackroundColor;
-    for (DPPINLabel *label in _labels)
-    {
-        label.backgroundColor = _fieldBackroundColor;
-    }
 }
 
 - (void)setUnderlineColor:(UIColor *)underlineColor
